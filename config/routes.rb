@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  resources :jobs
+  resources :jobs 
+  resources :apply
     # member do
     #   post 'apply'
     #   get 'apply'
     # end
-  resources :apply
+  
+  
   devise_for :users, :controllers => {:registrations => "registrations"}
   root to: 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

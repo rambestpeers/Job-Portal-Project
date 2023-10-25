@@ -1,12 +1,10 @@
-<h1>This is form</h1>
-
-<%= form_with(model: apply) do |form| %>
-  
+<%= form_with(model: @apply, url: new_apply_path(@job)) do |form| %>
     <div>
       <%= form.label :name, style: "display: block" %>
       <%= form.text_field :name %>
     </div>
-  
+   
+
     <div>
       <%= form.label :about_yourself, style: "display: block" %>
       <%= form.text_area :about_yourself %>
