@@ -71,10 +71,7 @@ class JobsController < ApplicationController
     end
   end
 
-  def apply
-
-    @apply = Apply.create(app_params)
-  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -87,7 +84,5 @@ class JobsController < ApplicationController
       params.require(:job).permit(:title, :description, :job_category, :location, :job_author, :job_company, :salary)
     end
 
-    def app_params
-      params.require(:apply).permit(:name, :about_yourself, :skills, :notice_period, :cv)
-    end
+    
 end

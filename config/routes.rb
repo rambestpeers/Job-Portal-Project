@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :jobs do
-    member do
-      post 'apply'
-      get 'apply'
-    end
-  end
+  resources :jobs
+    # member do
+    #   post 'apply'
+    #   get 'apply'
+    # end
+  resources :apply
   devise_for :users, :controllers => {:registrations => "registrations"}
   root to: 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -22,5 +22,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out', to: 'devise/sessions#destroy'
   end
+
+  
   
 end

@@ -1,2 +1,3 @@
 class Apply < ApplicationRecord
+    
 end
