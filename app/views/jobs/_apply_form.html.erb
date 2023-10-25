@@ -1,0 +1,36 @@
+<%= form_with(model: apply) do |form| %>
+  
+    <div>
+      <%= form.label :name, style: "display: block" %>
+      <%= form.text_field :name %>
+    </div>
+  
+    <div>
+      <%= form.label :about_yourself, style: "display: block" %>
+      <%= form.text_area :about_yourself %>
+    </div>
+  
+  
+    <div>
+      <%= form.label :skills, style: "display: block" %>
+      <%= form.text_field :skills %>
+    </div>
+
+    <div>
+      <%= form.label :notice_period, style: "display: block" %>
+      <%= form.number_field :notice_period %>
+    </div>
+
+  
+    <div>
+      <%= form.label :cv, style: "display: block" %>
+      <%= form.file_field :cv %>
+    </div>
+  
+     
+  
+    <div>
+      <%= form.submit "Apply" %>
+    </div>
+<% end %>
+  

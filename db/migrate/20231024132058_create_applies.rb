@@ -1,0 +1,13 @@
+class CreateApplies < ActiveRecord::Migration[7.1]
+  def change
+    create_table :applies do |t|
+      t.string :name
+      t.string :skills
+      t.string :about_yourself
+      t.string :cv
+      t.integer :notice_period
+
+      t.timestamps
+    end
+  end
+end
