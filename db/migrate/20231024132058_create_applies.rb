@@ -6,6 +6,7 @@ class CreateApplies < ActiveRecord::Migration[7.1]
       t.string :about_yourself
       t.string :cv
       t.integer :notice_period
+      t.references :job, foreign_key: true
 
       t.timestamps
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_24_132058) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_26_065931) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,8 +20,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_24_132058) do
     t.string "about_yourself"
     t.string "cv"
     t.integer "notice_period"
+    t.bigint "job_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_applies_on_job_id"
+    t.index ["user_id"], name: "index_applies_on_user_id"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -56,4 +60,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_24_132058) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "applies", "jobs"
+  add_foreign_key "applies", "users"
 end

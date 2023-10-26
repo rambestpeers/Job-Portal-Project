@@ -1,4 +1,4 @@
-<%= form_with(model: @apply, url: new_apply_path(@job)) do |form| %>
+<%= form_with(model: @apply, url: job_apply_index_path) do |form| %>
     <div>
       <%= form.label :name, style: "display: block" %>
       <%= form.text_field :name %>
@@ -30,6 +30,6 @@
      
   
     <div>
-      <%= form.submit "Apply" %>
+      <%= form.submit  %>
     </div>
 <% end %>

@@ -13,7 +13,7 @@
       <%= @job.description.html_safe %>
     </div>
     
-    <%= link_to 'Apply to this job', new_apply_path(params[:id]), class:"button is-rounded is-large is-fullwidth is-link" %>
+    <%= link_to 'Apply to this job', new_job_apply_path(params[:id]), class:"button is-rounded is-large is-fullwidth is-link" %>
     
 
   </div>

@@ -5,27 +5,33 @@ class ApplyController < ApplicationController
     end
       
     def new
-      byebug
-      @apply = Apply.new
+     
+      @job = Job.find(params[:job_id])
+      @apply = Apply.new(job: @job)
     end
 
     def create
-      byebug
+      
       @apply = Apply.new(app_params)
+      @apply.user = current_user
+      @apply.job = Job.find(params[:job_id])
 
-      # if @apply.save
-      #   redirect_to @appl
-      # end
       if @apply.save
-        redirect_to @apply  # Redirect to the show page for the newly created Apply record
+        
+        UserMailer.welcome_email(current_user).deliver_now
+        
+        redirect_to jobs_path
       else
-        render 'new'  # Render the 'new' view with validation errors if save fails
+        render 'new'
       end
+
+      
+    
     end
 
     private
 
       def app_params
-        params.require(:apply).permit(:name, :about_yourself, :skills, :notice_period, :cv)
+        params.require(:apply).permit(:name, :about_yourself, :skills, :notice_period, :cv, :job_id, :user_id)
       end
 end
