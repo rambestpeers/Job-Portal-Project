@@ -14,7 +14,11 @@
 
             <%= f.text_field :name, 
 	                     placeholder: 'username (will be shown publicly)', 
-	                     class: 'form-control' %>
+	                     class: 'form-control' %><br>
+                       
+            <%= f.collection_select :admin, 
+                             [[false, 'User'],[true, 'Recruiter']],
+                              :first, :second, prompt: 'Select a role' %>                  
 
             <%= f.text_field :email, 
 	                     placeholder: 'email', 

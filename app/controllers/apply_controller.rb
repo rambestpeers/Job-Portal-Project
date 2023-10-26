@@ -18,7 +18,7 @@ class ApplyController < ApplicationController
 
       if @apply.save
         
-        UserMailer.welcome_email(current_user).deliver_now
+        # UserMailer.welcome_email(current_user).deliver_now
         
         redirect_to jobs_path
       else
