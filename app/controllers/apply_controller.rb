@@ -1,7 +1,7 @@
 class ApplyController < ApplicationController
   before_action :authenticate_user!
     def index
-
+        @apply = Apply.where(user_id: current_user.id)
     end
       
     def new

@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   resources :jobs do
-    resources :apply
+    resources :apply, only: [:new, :create] 
+        
+   
   end
   
+  resources :apply, only: [:index]
   
    
   

@@ -30,7 +30,7 @@ class JobsController < ApplicationController
 
   # POST /jobs or /jobs.json
   def create
-    if current_user.admin == true
+    if current_user.role == true
 
       @job = current_user.jobs.build(job_params)
 

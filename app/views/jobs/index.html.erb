@@ -14,7 +14,7 @@
       <div class="column is-8">
         <h3 class="title is-4 index-title"><%= link_to job.title, job %></h3>
           <ul>
-            <li><%= job.job_company %> ||  <%= job.job_author %> || <%= job.location%></li>
+            <li><%= job.job_company %> ||  <%= job.job_author %> || <%= job.location%>  || <%=job.salary%>LPA </li>
           </ul>
         <div class="pv2 f6">
           <%= sanitize(job.description.truncate(70, separator: '</p>')) %>
