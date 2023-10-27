@@ -1,13 +1,16 @@
-<h1 class="app_head">My Applications</h1>
+<div class=card_head>    
+    <h1 class="app_head">My Applications</h1>
 
-<% @apply.each do |app| %>
-    <div class="card" style="width: 18rem;">
-     <div class="card-body">
-       <h5 class="card-title"><%= app.job.title%></h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary"><%= app.job.job_category %></h6>
-       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-     </div>
-    </div>
-<% end %>
+    <% @apply.each do |app| %>
+        <div class="card">
+         <div class="card-body">
+          <h5 class="card-title"><%= app.job.title%></h5>
+           <h6 class="card-subtitle mb-2 text-body-secondary"><%= app.job.job_category %></h6>
+          <p class="card-text"></i> Applied: <%= time_ago_in_words(app.created_at) %> ago</p>
+        </div>
+       </div>
+    <% end %>
+</div>
+
 
 

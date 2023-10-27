@@ -1,6 +1,10 @@
 .ab{
     color: blue
 }
+.photo{
+    height: 100px;
+    width:100px;
+}
 
 /* #jobs{
     position: relative;
@@ -28,3 +32,41 @@
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
+
+
+
+.app_head{
+    margin: 20px auto;
+    text-align: center;
+    
+}
+
+.card{
+    
+    background-color: #e4d5d5;
+    margin: 10px auto;
+    border: 2px solid black;
+    width: 80%;
+    border-radius: 19px;
+    height: 11rem;
+    font-family: system-ui;
+  
+}
+.card-title{
+    font-size: 21px;
+    margin-left: 21px;
+}
+
+.card-subtitle{
+    font-size: 16px;
+    margin-left: 44px;
+}
+
+.card-text{
+    color: rgb(33, 33, 207);
+    margin-left: 5px;
+}
+
+
+
+
