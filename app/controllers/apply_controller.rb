@@ -1,11 +1,10 @@
 class ApplyController < ApplicationController
   before_action :authenticate_user!
     def index
-        @apply = Apply.where(user_id: current_user.id)
+      @apply = Apply.where(user_id: current_user.id)
     end
       
     def new
-     
       @job = Job.find(params[:job_id])
       @apply = Apply.new(job: @job)
     end
@@ -16,17 +15,12 @@ class ApplyController < ApplicationController
       @apply.user = current_user
       @apply.job = Job.find(params[:job_id])
 
-      if @apply.save
-        
-        # UserMailer.welcome_email(current_user).deliver_now
-        
+      if @apply.save        
+        # UserMailer.welcome_email(current_user).deliver_now        
         redirect_to jobs_path
       else
         render 'new'
       end
-
-      
-    
     end
 
     private

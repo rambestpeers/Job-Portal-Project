@@ -7,6 +7,8 @@
           <h5 class="card-title"><%= app.job.title%></h5>
            <h6 class="card-subtitle mb-2 text-body-secondary"><%= app.job.job_category %></h6>
           <p class="card-text"></i> Applied: <%= time_ago_in_words(app.created_at) %> ago</p>
+          <p class="card-text"></i> Status: <%= app.status%></p>
+
         </div>
        </div>
     <% end %>
