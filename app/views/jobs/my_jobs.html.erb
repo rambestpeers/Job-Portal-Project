@@ -1,0 +1,14 @@
+<h1>My Jobs</h1>
+<% @job.each do |job| %>
+    <div class="card">
+     <div class="card-body">
+      <h5 class="card-title"><%= link_to job.title, job %></h5>
+       <h6 class="card-subtitle mb-2 text-body-secondary"><%=job.job_category %></h6>
+       <p class="card-text">Created on <%= job.created_at.strftime('%B %d, %Y') %></p>
+       <p class="card-text">Total Application: <%=job.applies.count%></p>
+    </div>
+   </div>  
+   
+   
+<% end %>
+

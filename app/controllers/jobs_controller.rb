@@ -11,20 +11,16 @@ class JobsController < ApplicationController
     end
   end
 
-  
   def show
   end
 
-  
   def new
     @job = current_user.jobs.build
   end
 
-  
   def edit
   end
 
-  
   def create
     if current_user.role == true
       @job = current_user.jobs.build(job_params)
@@ -40,7 +36,6 @@ class JobsController < ApplicationController
     end
   end
 
-  
   def update
     respond_to do |format|
       if @job.update(job_params)
@@ -53,7 +48,6 @@ class JobsController < ApplicationController
     end
   end
 
-  
   def destroy
     @job.destroy!
 
@@ -63,18 +57,17 @@ class JobsController < ApplicationController
     end
   end
 
-  
+  def my_jobs
+    @job = Job.where(user_id: current_user)
+  end
 
   private
    
-    def set_job
-      @job = Job.find(params[:id])
-    end
+  def set_job
+    @job = Job.find(params[:id])
+  end
 
-    
-    def job_params
-      params.require(:job).permit(:title, :description, :job_category, :location, :job_author, :job_company, :salary)
-    end
-
-    
+  def job_params
+    params.require(:job).permit(:title, :description, :job_category, :location, :job_author, :job_company, :salary)
+  end
 end

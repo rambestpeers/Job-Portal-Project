@@ -41,3 +41,21 @@
     <% end %>
   </div>
 </div>
+
+<div>
+  <% if current_user.role == true%>
+    <% @job.applies.each do |apply| %>
+      
+        <h5 class="card-title"><%= apply.name%></h5>
+        <p class="card-text">Skills: <%= apply.skills%></p>
+        <p class="card-text">About Yourself: <%= apply.about_yourself%></p>
+        <p class="card-text">Notice Period: <%=apply.notice_period%> Months</p>
+       
+        <%= link_to "Accept", accept_apply_path(id: apply.id), method: :get, class: "btn btn-success btn-sm mr-2" %>
+        <%= link_to "Reject", reject_apply_path(id: apply.id), method: :get, class: "btn btn-danger btn-sm mr-2" %>
+       
+      
+    <%end%>
+
+  <% end %>
+</div>

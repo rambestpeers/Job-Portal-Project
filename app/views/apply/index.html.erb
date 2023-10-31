@@ -1,17 +1,34 @@
 <div class=card_head>    
     <h1 class="app_head">My Applications</h1>
 
-    <% @apply.each do |app| %>
-        <div class="card">
-         <div class="card-body">
-          <h5 class="card-title"><%= app.job.title%></h5>
-           <h6 class="card-subtitle mb-2 text-body-secondary"><%= app.job.job_category %></h6>
-          <p class="card-text"></i> Applied: <%= time_ago_in_words(app.created_at) %> ago</p>
-          <p class="card-text"></i> Status: <%= app.status%></p>
-
+    <% if current_user.role == true %>
+        <h3>Total applications: <%= @applies.count %></h3>
+        <% @applies.each do |application| %>
+        <div class="job">
+            <% user = User.find(application.user_id) %>
+            <td><%= application.name %></td>
+            <td><%= application.job.title %></td>
+           
+            
         </div>
-       </div>
+        <% end %>
+    
+    <% else %>
+        <% @apply.each do |app| %>
+            <div class="card">
+            <div class="card-body">
+            <h5 class="card-title"><%= app.job.title%></h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary"><%= app.job.job_category %></h6>
+            <p class="card-text"></i> Applied: <%= time_ago_in_words(app.created_at) %> ago</p>
+            <p class="card-text"></i> Status: <%= app.status%></p>
+
+            </div>
+        </div>
+        <% end %>
+
     <% end %>
+
+    
 </div>
 
 

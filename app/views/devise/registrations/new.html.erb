@@ -12,13 +12,16 @@
                        :as => resource_name, 
                        :url => registration_path(resource_name)) do |f| %>
 
+            <%= f.collection_select :role, 
+                                        [[false, 'User'],[true, 'Recruiter']],
+                                          :first, :second, prompt: 'Select a role' %>
+                                          
+
             <%= f.text_field :name, 
 	                     placeholder: 'username (will be shown publicly)', 
 	                     class: 'form-control' %><br>
                    
-            <%= f.collection_select :role, 
-                             [[false, 'User'],[true, 'Recruiter']],
-                              :first, :second, prompt: 'Select a role' %>                  
+                              
 
             <%= f.text_field :email, 
 	                     placeholder: 'email', 

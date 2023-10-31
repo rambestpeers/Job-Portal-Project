@@ -1,11 +1,11 @@
 
 <!-- Collect the nav links, forms, and other content for toggling -->
-<div class="collapse navbar-collapse navbar-right" id="navbar-collapsible-content">
+<div class="collapse navbar-collapse navbar-right color-black" id="navbar-collapsible-content">
   <ul class="nav navbar-nav ">
     <% if user_signed_in? %>
       
       <% if current_user.role == true %>
-         <%= link_to 'Job Request', new_job_path, class: 'navbar-brand'%>
+        
          <%= link_to 'Post Job', new_job_path, class: 'navbar-brand'%>
       <% else %>
          

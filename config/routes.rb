@@ -1,13 +1,21 @@
 Rails.application.routes.draw do
   resources :jobs do
+    collection do
+      get 'my_jobs' 
+    end
+    
     resources :apply, only: [:new, :create] 
         
    
   end
   
-  resources :apply, only: [:index]
+  resources :apply, only: [:index, :show] do
+    member do
+      get 'accept'
+      get 'reject'
+    end
   
-   
+  end
   
   devise_for :users, :controllers => {:registrations => "registrations"}
   root to: 'home#index'
