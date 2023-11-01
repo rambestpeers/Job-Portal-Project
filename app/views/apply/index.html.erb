@@ -1,19 +1,6 @@
 <div class=card_head>    
     <h1 class="app_head">My Applications</h1>
 
-    <% if current_user.role == true %>
-        <h3>Total applications: <%= @applies.count %></h3>
-        <% @applies.each do |application| %>
-        <div class="job">
-            <% user = User.find(application.user_id) %>
-            <td><%= application.name %></td>
-            <td><%= application.job.title %></td>
-           
-            
-        </div>
-        <% end %>
-    
-    <% else %>
         <% @apply.each do |app| %>
             <div class="card">
             <div class="card-body">
@@ -25,10 +12,6 @@
             </div>
         </div>
         <% end %>
-
-    <% end %>
-
-    
 </div>
 
 

@@ -16,17 +16,9 @@ class ApplyController < ApplicationController
 
   def create
     @apply = Apply.new(app_params)
-    # @apply.recuiter_id = @job.user_id
     @apply.user = current_user
-    
     @apply.job = Job.find(params[:job_id])
-    
-    
-
-    
-
-    if @apply.save        
-      # UserMailer.welcome_email(current_user).deliver_now        
+    if @apply.save              
       redirect_to jobs_path
     else
       render 'new'
@@ -34,25 +26,19 @@ class ApplyController < ApplicationController
   end
 
   def show
-   
-    
-    
-   
   end
-
   def accept
     @apply = Apply.find(params[:id])
     @apply.accepted!
-    redirect_to, notice: 'Job request accepted.'
-
+    # UserMailer.accept_application(@apply).deliver_now 
+    redirect_to my_jobs_jobs_path, notice: 'Job request accepted.'
   end
 
   def reject
-    
     @apply = Apply.find(params[:id])
     @apply.rejected!
-    redirect_to, notice: 'Job request accepted.'
-
+    # UserMailer.reject_application(@apply).deliver_now 
+    redirect_to my_jobs_jobs_path, notice: 'Job request rejected.'
   end
 
   private
@@ -62,6 +48,6 @@ class ApplyController < ApplicationController
   # end
 
   def app_params
-    params.require(:apply).permit(:name, :about_yourself, :skills, :notice_period, :cv, :job_id, :user_id)
+    params.require(:apply).permit(:name, :about_yourself, :skills, :notice_period, :resume, :job_id, :user_id)
   end
 end

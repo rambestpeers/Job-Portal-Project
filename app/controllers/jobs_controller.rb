@@ -2,7 +2,6 @@ class JobsController < ApplicationController
   before_action :set_job, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
 
-  # GET /jobs or /jobs.json
   def index
     if(params.has_key?(:job_category))
       @jobs = Job.where(job_category: params[:job_category]).order("created_at desc")
@@ -58,7 +57,7 @@ class JobsController < ApplicationController
   end
 
   def my_jobs
-    @job = Job.where(user_id: current_user)
+    @job = Job.where(user_id: current_user.id)
   end
 
   private
