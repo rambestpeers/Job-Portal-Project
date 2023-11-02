@@ -14,12 +14,14 @@
       <%= @job.description.html_safe %>
     </div>
     
-    <%if !current_user.try(:role)%>
-      <% if @job.applies.where(user_id: current_user.id).present? %>
-        <p style="color:red">You have already apllied to this job</p>
-      <% else %>
-        <%= link_to 'Apply to this job', new_job_apply_path(params[:id]), class:"button is-rounded is-large is-fullwidth is-link" %>
-      <% end %>
+    <%if !current_user.try(:role) && user_signed_in?%>
+      
+        <% if @job.applies.where(user_id: current_user.id).present? %>
+          <p style="color:red">You have already apllied to this job</p>
+        <% else %>
+          <%= link_to 'Apply to this job', new_job_apply_path(params[:id]), class:"button is-rounded is-large is-fullwidth is-link" %>
+        <% end %>
+      
     <% end %>
   </div>
 
@@ -44,19 +46,19 @@
     
     <% if current_user.role == true && (current_user.id == @job.user_id)%>
       <% @job.applies.each do |apply| %>
-        <div class=card>
+        <div class="card1">
           <h5 class="card-title"><%= apply.name%></h5>
           <p class="card-text">Skills: <%= apply.skills%></p>
           <p class="card-text">About Yourself: <%= apply.about_yourself%></p>
           <% if apply.resume.persisted?%>
-           <%= image_tag(apply.resume) %>
+            <%= link_to 'Download CV', url_for(apply.resume) %>
           <%end%>
           
           
           <%if apply.status == 'accepted'%>
-              <h3>You have already accepted this application</h3>
+              <h3 style="color:red">You have already accepted this application</h3>
             <%elsif apply.status == 'rejected'%>
-              <h3>You have already rejected this application</h3>
+              <h3 style="color:red">You have already rejected this application</h3>
             <%else%>
               <div class="mt-4">
                 <%= link_to "Accept", accept_apply_path(id: apply.id), method: :get, class: "btn btn-success btn-sm mr-2" %>

@@ -6,12 +6,10 @@
         <%= form.text_field :name %>
       </div>
 
-
       <div>
         <%= form.label :about_yourself, style: "display: block" %>
         <%= form.text_area :about_yourself %>
       </div>
-
 
       <div>
         <%= form.label :skills, style: "display: block" %>
@@ -19,8 +17,8 @@
       </div>
 
       <div>
-        <%= form.label :notice_period, style: "display: block" %>
-        <%= form.number_field :notice_period %>
+        <%= form.label :education, style: "display: block" %>
+        <%= form.text_field :education%>
       </div>
 
       <div>
@@ -28,11 +26,8 @@
         <%= form.file_field :resume %>
       </div>
 
-      
-
       <div>
         <%= form.submit  %>
       </div>
     <% end %>
 </div>
-

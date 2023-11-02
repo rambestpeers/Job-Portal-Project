@@ -1,12 +1,7 @@
 class ApplyController < ApplicationController
   before_action :authenticate_user!
-  # before_action :find_apply, only: [:accept, :reject, :show, :destroy]
   def index
-    if current_user.role == true
-      @applies = Apply.where(job_id: params[:job_id])
-    else
       @apply = Apply.where(user_id: current_user.id)
-    end
   end
     
   def new
@@ -25,8 +20,6 @@ class ApplyController < ApplicationController
     end
   end
 
-  def show
-  end
   def accept
     @apply = Apply.find(params[:id])
     @apply.accepted!
@@ -43,11 +36,7 @@ class ApplyController < ApplicationController
 
   private
 
-  # def find_apply
-  #   @apply = Apply.find(params[:id])
-  # end
-
   def app_params
-    params.require(:apply).permit(:name, :about_yourself, :skills, :notice_period, :resume, :job_id, :user_id)
+    params.require(:apply).permit(:name, :about_yourself, :skills, :education, :resume, :job_id, :user_id)
   end
 end

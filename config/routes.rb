@@ -3,10 +3,7 @@ Rails.application.routes.draw do
     collection do
       get 'my_jobs' 
     end
-    
     resources :apply, only: [:new, :create] 
-        
-   
   end
   
   resources :apply, only: [:index, :show] do
@@ -14,7 +11,6 @@ Rails.application.routes.draw do
       get 'accept'
       get 'reject'
     end
-  
   end
   
   devise_for :users, :controllers => {:registrations => "registrations"}
@@ -34,7 +30,4 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out', to: 'devise/sessions#destroy'
   end
-
-  
-  
 end

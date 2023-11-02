@@ -70,3 +70,15 @@
 .form-job{
     background-color: aliceblue;
 }
+
+.card1{
+    
+    background-color: #e4d5d5;
+    margin: 10px auto;
+    border: 2px solid black;
+    width: 80%;
+    border-radius: 19px;
+    height: 20rem;
+    font-family: system-ui;
+  
+}
