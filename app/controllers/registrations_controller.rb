@@ -1,5 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
+  
+  # protect_from_forgery with: :null_session
 
+  # skip_before_action :verify_authenticity_token
   private
 
   def sign_up_params

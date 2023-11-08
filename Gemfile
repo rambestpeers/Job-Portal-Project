@@ -49,7 +49,14 @@ gem 'sass-rails', '>= 3.2'
 gem 'jquery-rails'
 
 gem 'devise'
+gem 'devise-jwt'
 gem 'byebug'
+
+# gems for apis
+gem 'bcrypt', '~> 3.1.7'
+gem 'rack-cors'
+gem 'jwt'
+
 
 
 
@@ -64,6 +71,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails'
   gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
   gem 'simplecov', require: false
 
 end
