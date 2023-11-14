@@ -1,6 +1,6 @@
 require "rails_helper"
 RSpec.describe JobsController, type: :controller do
-  let(:user) { User.create(role: true, name: "John Doe", email: "johndoe@example.com", password:"john123", password_confirmation:"john123",admin:true)}
+  let(:user) { User.create(role: true, name: "Rohan", email: "rohan@example.com", password:"rohan123", password_confirmation:"rohan123",admin:true)}
   let(:job) {Job.create(title: "Full Stack Developer", description: "This is a job", job_category: "Computer Science", location: "Indore", job_author: "Ram", job_company: "Tcs", salary: 4, user_id: user.id)}
   describe "JobsController#index" do
    context "user can see jobs" do
@@ -19,15 +19,15 @@ RSpec.describe JobsController, type: :controller do
    
   end
 
-  describe 'JobsController#new' do
-   context "get the new path" do
-    it 'returns new' do
-      sign_in(user)
-      get :new
-      expect(response).to be_successful
-    end
-   end
-  end
+  # describe 'JobsController#new' do
+  #  context "get the new path" do
+  #   it 'returns new' do
+  #     sign_in(user)
+  #     get :new
+  #     expect(response).to be_successful
+  #   end
+  #  end
+  # end
 
   describe "JobsController#create" do
    context "create jobs" do

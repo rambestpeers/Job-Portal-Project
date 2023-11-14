@@ -1,16 +1,16 @@
 class Api::V1::JobsController < ApiController
   before_action :set_job, only: %i[ show edit update destroy ]
   # before_action :authenticate_user!, except: [:index, :show]
+
   skip_before_action :verify_authenticity_token
 
   def index
     if(params.has_key?(:job_category))
-      @jobs = Job.where(job_category: params[:job_category]).order("created_at desc")
-      render json: @jobs, status: :ok
+      @jobs = Job.where(job_category: params[:job_category]).order("created_at desc")      
     else
-      @jobs = Job.all.order("created_at desc")
-      render json: @jobs, status: :ok
+      @jobs = Job.all.order("created_at desc")      
     end
+    render json: @jobs, status: :ok
   end
 
   def show
@@ -19,34 +19,26 @@ class Api::V1::JobsController < ApiController
 
   def new
     @job = current_user.jobs.build
-    # @job = Job.new
   end
 
   def edit
   end
 
   def create
-    if current_user.role == true
+    # if current_user.role == true
       # @job = current_user.jobs.build(job_params)
       @job = Job.create(job_params)
-      @job.user_id = current_user.id
-      respond_to do |format|
-        if @job.save
-          format.json { render json: @job, status: :created, location: @job }
-        else
-          format.json { render json: @job.errors, status: :unprocessable_entity }
-        end
-        end
-    end
+      @job.user_id = current_user
+      if @job.save
+        render json:@job
+      end    
   end
 
   def update
     if current_user.admin == true
-      respond_to do |format|
-        if @job.update(job_params)
-          format.json { render :show, status: :ok, location: @job }
-        else
-          format.json { render json: @job.errors, status: :unprocessable_entity }
+      if @job.update(job_params)
+        respond_to do |format|
+          format.json { render json: @job, status: :ok, location: @job }
         end
       end
     end

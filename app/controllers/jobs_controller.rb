@@ -14,7 +14,7 @@ class JobsController < ApplicationController
   end
 
   def new
-    @job = current_user.jobs.build
+   
     @job = Job.new
   end
 
@@ -22,6 +22,7 @@ class JobsController < ApplicationController
   end
 
   def create
+   
     if current_user.role == true
       @job = current_user.jobs.build(job_params)
       # byebug

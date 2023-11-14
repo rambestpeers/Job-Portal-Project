@@ -20,7 +20,6 @@ RSpec.describe ApplyController, type: :controller do
   #  context "user can initialize with new job" do
   #   it "return new" do
   #     sign_in(user)
-  #     byebug
   #     get :new
   #     expect(response).to render_template("form")
   #   end

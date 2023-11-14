@@ -7,10 +7,7 @@ class Api::V1::SessionsController < ApiController
     @user = User.new(sign_up_params)
     if @user.save
       token = AuthenticationTokenService.encode_token(@user.id)
-      # if token
       render json: { token: token }
-      #  render json: @user
-      # end
     else
       render json: { error: @user.errors.full_messages }, status: :unprocessable_entity
     end
@@ -36,12 +33,5 @@ class Api::V1::SessionsController < ApiController
                                   :password_confirmation)
   end
 
-  def account_update_params
-    params.require(:user).permit( :name,
-                                  :email, 
-                                  :password, 
-                                  :password_confirmation, 
-                                  :current_password)
-  end
 end
   
