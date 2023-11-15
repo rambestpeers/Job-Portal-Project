@@ -56,15 +56,16 @@ RSpec.describe ApplyController, type: :controller do
 
   describe "ApplyController#reject" do
     context "recruiter can accept the application" do
-    it "update the status" do
-      sign_in(recruiter)
-      get :reject, params: {id: apply.id}
-      apply.reload
-      expect(apply.status).to eq('rejected')
-      
-    end
+      it "update the status" do
+        sign_in(recruiter)
+        get :reject, params: {id: apply.id}
+        apply.reload
+        expect(apply.status).to eq('rejected')
+      end
     end
   end
+
+  
   
 
 end
