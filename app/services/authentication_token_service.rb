@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class AuthenticationTokenService
   def self.encode_token(user_id)
     exp = 24.hours.from_now.to_i
-    payload = { user_id: user_id, exp: exp }
+    payload = { user_id:, exp: }
     JWT.encode(payload, Rails.application.secrets.secret_key_base, 'HS256')
   end
 
@@ -12,9 +14,9 @@ class AuthenticationTokenService
   end
 
   def self.authenticate(email, password)
-    user = User.find_by(email: email)
+    user = User.find_by(email:)
     # byebug
-    return user if user && user.valid_password?(password)
+    return user if user&.valid_password?(password)
 
     nil
   end
