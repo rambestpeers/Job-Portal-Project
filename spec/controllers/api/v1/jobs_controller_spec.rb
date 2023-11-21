@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative '../../../support/devise'
 
 RSpec.describe Api::V1::JobsController, type: :controller do
   let(:user) do
