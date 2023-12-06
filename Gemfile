@@ -51,9 +51,11 @@ gem 'byebug'
 gem 'cssbundling-rails'
 gem 'devise'
 gem 'devise-jwt'
+gem 'httparty'
 gem 'jquery-rails'
 gem 'jwt'
 gem 'rack-cors'
+gem 'rails-i18n'
 gem 'ransack'
 gem 'rubocop', require: false
 gem 'rubycritic', require: false

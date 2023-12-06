@@ -2,7 +2,7 @@
 
 module API
   module V1
-    class HomeController < ApplicationController
+    class HomeController < ApiController
       def index; end
     end
   end

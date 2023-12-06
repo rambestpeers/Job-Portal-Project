@@ -12,7 +12,9 @@ class JobsController < ApplicationController
       if params.key?(:job_category)
         @jobs =Job.where(job_category: params[:job_category]).order('created_at desc')
       else
+      
         @jobs =Job.all.order('created_at desc')
+        
       end
     end
   end

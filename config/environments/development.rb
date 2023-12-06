@@ -31,7 +31,7 @@ Rails.application.configure do
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
   else
-    config.action_controller.perform_caching = false
+    config.action_controller.perform_caching = true
 
     config.cache_store = :null_store
   end
@@ -76,8 +76,8 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'gmail.com',
-    user_name: 'rapatidar@bestpeers.in',
-    password: 'llkccdkofgjzgdbt',
+    user_name: 'email@example.com',
+    password: 'your password',
     authentication: 'plain',
     enable_starttls: true,
     open_timeout: 5,
